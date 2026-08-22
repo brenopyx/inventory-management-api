@@ -1,5 +1,5 @@
 from sqlalchemy import ForeignKey, Integer, String, Float, func, DateTime
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 from datetime import datetime
 from app.database import Base
 import enum
@@ -18,3 +18,5 @@ class Movimentacao(Base):
     quantidade: Mapped[int] = mapped_column(Integer, nullable=False)
     motivo: Mapped[str] = mapped_column(String(50), nullable=True)
     criado_em: Mapped[datetime] = mapped_column(DateTime(timezone=True), insert_default=func.now())
+
+    produto: Mapped["Produto"] = relationship(back_populates="movimentacoes")

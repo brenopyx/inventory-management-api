@@ -3,7 +3,7 @@ from sqlalchemy.orm import DeclarativeBase, sessionmaker
 from dotenv import load_dotenv
 import os
 
-# Conxao com o DataBas
+# Conxao com o DataBase
 load_dotenv()
 conexao_db = os.getenv("DATABASE_URL")
 
@@ -12,3 +12,11 @@ Sessao = sessionmaker(engine)
 
 class Base(DeclarativeBase):
     pass
+
+def get_db():
+    db = Sessao()
+    try:
+        yield db
+    finally:
+        db.close()
+        
