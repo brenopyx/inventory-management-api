@@ -5,12 +5,14 @@ from app.schemas.categoria import CategoriaResponse
 class ProdutoCreate(BaseModel):
     nome: str
     preco: float
+    descricao: str | None = None
     categoria_id: int
 
 class ProdutoResponse(BaseModel):
     id: int
     nome: str
     preco: float
+    descricao: str | None = None
     categoria: CategoriaResponse
     criado_em: datetime
 
@@ -23,5 +25,6 @@ class EstoqueResponse(BaseModel):
 
 class ProdutoUpdate(BaseModel):
     nome: str | None = None
-    categoria_id: int | None = None
     preco: float | None = None
+    descricao: str | None = None
+    categoria_id: int | None = None

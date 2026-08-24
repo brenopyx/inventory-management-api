@@ -18,6 +18,7 @@ def criar_produto(produto: ProdutoCreate, db: Session = Depends(get_db)):
     novo_produto = Produto(
         nome = produto.nome,
         preco = produto.preco,
+        descricao = produto.descricao,
         categoria_id = produto.categoria_id
     )
     db.add(novo_produto)
@@ -59,11 +60,14 @@ def atualizar_produto(produto_id: int, dados: ProdutoUpdate, db: Session = Depen
     if dados.nome is not None:
         produto.nome = dados.nome
 
-    if dados.categoria_id is not None:
-        produto.categoria_id = dados.categoria_id
-
     if dados.preco is not None:
         produto.preco = dados.preco
+
+    if dados.descricao is not None:
+        produto.descricao = dados.descricao
+
+    if dados.categoria_id is not None:
+            produto.categoria_id = dados.categoria_id
 
     db.commit()
     db.refresh(produto)
