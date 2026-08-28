@@ -34,7 +34,10 @@ def atualizar_categoria(categoria_id: int, dados: CategoriaUpdate, db: Session =
     categoria = db.query(Categoria).filter(Categoria.id == categoria_id).first()
 
     if categoria is None:
-        raise HTTPException(status_code=404, detail="Categoria não encontrada")
+        raise HTTPException(
+            status_code=404, 
+            detail="Categoria não encontrada"
+            )
 
     if dados.nome is not None:
         categoria.nome = dados.nome
@@ -44,23 +47,28 @@ def atualizar_categoria(categoria_id: int, dados: CategoriaUpdate, db: Session =
 
     return categoria
 
-@router.delete("/{categoria_id}", response_model=CategoriaResponse)
+@router.delete("/{categoria_id}", status_code=204)
 def deletar_categoria(categoria_id: int, db: Session = Depends(get_db)):
     categoria_delete = db.query(Categoria).filter(Categoria.id == categoria_id).first()
 
     if categoria_delete is None:
-        raise HTTPException(status_code=404, detail="Categoria não encontrada")
+        raise HTTPException(
+            status_code=404,
+            detail="Categoria não encontrada"
+            )
 
     produtos_vinculados = db.query(Produto).filter(Produto.categoria_id == categoria_id).first()
 
     if produtos_vinculados is not None:
-        raise HTTPException(status_code=400, detail="Não é possivel excluir: existem produtos vinculados a essa categoria")
+        raise HTTPException(
+            status_code=400, 
+            detail="Não é possivel excluir: existem produtos vinculados a essa categoria"
+            )
 
     db.delete(categoria_delete)
     db.commit()
 
-    return categoria_delete
-
+    return None
 
 
 

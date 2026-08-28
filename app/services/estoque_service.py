@@ -2,6 +2,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy import func, case
 from app.models.movimentacao import Movimentacao, TipoMovimentacao
 from app.schemas.movimentacao import MovimentacaoCreate, MovimentacaoResponse
+from app.models.produto import Produto
 from fastapi import HTTPException
 
 def calcular_estoque_atual(db: Session, produto_id: int) -> int:
@@ -18,8 +19,13 @@ def calcular_estoque_atual(db: Session, produto_id: int) -> int:
 
 
 def registrar_movimentacao(db: Session, movimentacao: MovimentacaoCreate) -> Movimentacao:
-    estoque_atual = calcular_estoque_atual(db, movimentacao.produto_id)
+    produto = db.query(Produto).filter(Produto.id == movimentacao.produto_id).first()
 
+    if produto is None:
+        raise HTTPException(status_code=404, detail="Produto não encontrado")
+
+    estoque_atual = calcular_estoque_atual(db, movimentacao.produto_id)
+    
     if movimentacao.tipo == TipoMovimentacao.SAIDA:
         if movimentacao.quantidade > estoque_atual:
             raise HTTPException(status_code=400, detail = f"Estoque insuficiente. Disponível: {estoque_atual}, Solicitado: {movimentacao.quantidade}")
