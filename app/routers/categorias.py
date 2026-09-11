@@ -4,6 +4,7 @@ from app.database import get_db
 from app.models.categoria import Categoria
 from app.schemas.categoria import CategoriaCreate, CategoriaResponse, CategoriaUpdate
 from app.models.produto import Produto
+from app.security import get_usuario_atual
 
 router = APIRouter(prefix="/categorias", tags=["Categorias"])
 
@@ -13,7 +14,11 @@ def listar_categorias(db: Session = Depends(get_db)):
     return categorias
 
 @router.post("/", response_model=CategoriaResponse)
-def criar_categoria(categoria: CategoriaCreate, db: Session = Depends(get_db)):
+def criar_categoria(categoria: CategoriaCreate,
+                    db: Session = Depends(get_db),
+                    usuario_atual: str = Depends(get_usuario_atual)
+                    ):
+    
     nova_categoria = Categoria(nome = categoria.nome)
     db.add(nova_categoria)
     db.commit()
@@ -21,7 +26,10 @@ def criar_categoria(categoria: CategoriaCreate, db: Session = Depends(get_db)):
     return nova_categoria
 
 @router.get("/{categoria_id}", response_model=CategoriaResponse)
-def buscar_categoria(categoria_id: int, db: Session = Depends(get_db)):
+def buscar_categoria(categoria_id: int,
+                     db: Session = Depends(get_db)
+                     ):
+    
     categoria = db.query(Categoria).filter(Categoria.id == categoria_id).first()
 
     if categoria is None:
@@ -30,7 +38,12 @@ def buscar_categoria(categoria_id: int, db: Session = Depends(get_db)):
     return categoria
 
 @router.put("/{categoria_id}", response_model=CategoriaResponse)
-def atualizar_categoria(categoria_id: int, dados: CategoriaUpdate, db: Session = Depends(get_db)):
+def atualizar_categoria(categoria_id: int,
+                        dados: CategoriaUpdate,
+                        db: Session = Depends(get_db),
+                        usuario_atual: str = Depends(get_usuario_atual)
+                        ):
+    
     categoria = db.query(Categoria).filter(Categoria.id == categoria_id).first()
 
     if categoria is None:
@@ -48,7 +61,11 @@ def atualizar_categoria(categoria_id: int, dados: CategoriaUpdate, db: Session =
     return categoria
 
 @router.delete("/{categoria_id}", status_code=204)
-def deletar_categoria(categoria_id: int, db: Session = Depends(get_db)):
+def deletar_categoria(categoria_id: int,
+                      db: Session = Depends(get_db),
+                      usuario_atual: str = Depends(get_usuario_atual)
+                      ):
+    
     categoria_delete = db.query(Categoria).filter(Categoria.id == categoria_id).first()
 
     if categoria_delete is None:

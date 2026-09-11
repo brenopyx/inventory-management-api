@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
 from app.database import Base
-from app.models import categoria, movimentacao, produto
+from app.models import categoria, movimentacao, produto, usuario
 import os
 
 from logging.config import fileConfig

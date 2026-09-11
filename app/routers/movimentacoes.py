@@ -5,6 +5,7 @@ from app.models.movimentacao import Movimentacao
 from app.schemas.movimentacao import MovimentacaoCreate, MovimentacaoResponse
 from app.models.produto import Produto
 from app.services.estoque_service import registrar_movimentacao
+from app.security import get_usuario_atual
 
 router = APIRouter(prefix="/movimentacoes", tags=["Movimentacoes"])
 
@@ -24,7 +25,8 @@ def listar_movimentacoes(produto_id: int | None = None, db: Session = Depends(ge
 
 @router.post("/", response_model=MovimentacaoResponse)
 def criar_movimentacao(movimentacao: MovimentacaoCreate, 
-                       db: Session = Depends(get_db)):
+                       db: Session = Depends(get_db),
+                       usuario_atual: str = Depends(get_usuario_atual)):
     return registrar_movimentacao(db, movimentacao)
 
 @router.get("/{movimentacao_id}", response_model=MovimentacaoResponse)
