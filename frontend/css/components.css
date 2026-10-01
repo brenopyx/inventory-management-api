@@ -1,0 +1,278 @@
+.card {
+    padding: 24px;
+    background: #fffdf9;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.card-title {
+    margin: 0 0 20px;
+    color: var(--brown-900);
+    font-size: 1.08rem;
+}
+
+.metric-card {
+    padding: 20px;
+    border-radius: 12px;
+    background: #fffdf9;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+}
+
+.metric-label {
+    margin: 0 0 9px;
+    color: var(--muted);
+    font-size: .85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+}
+
+.metric-value {
+    margin: 0;
+    color: var(--brown-900);
+    font-size: 1.9rem;
+    font-weight: 700;
+}
+
+.metric-card.alert {
+    background: var(--danger-bg);
+    border-color: #efc1bb;
+}
+
+.metric-card.alert .metric-value {
+    color: var(--danger);
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--brown-700);
+    font-weight: 700;
+    font-size: .9rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 11px 12px;
+    color: var(--ink);
+    background: #fffefa;
+    border: 1px solid var(--beige-300);
+    border-radius: 7px;
+    outline: none;
+}
+
+.form-control:focus {
+    border-color: var(--orange-600);
+    box-shadow: 0 0 0 3px rgba(201, 110, 45, .15);
+}
+
+textarea.form-control {
+    min-height: 88px;
+    resize: vertical;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 22px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 10px 15px;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: .9rem;
+    font-weight: 700;
+    transition: .2s ease;
+}
+
+.btn-primary {
+    color: white;
+    background: var(--orange-600);
+}
+
+.btn-primary:hover {
+    background: #ad5821;
+}
+
+.btn-outline {
+    color: var(--brown-700);
+    background: transparent;
+    border-color: var(--beige-300);
+}
+
+.btn-outline:hover {
+    background: var(--cream-200);
+}
+
+.btn-danger {
+    color: var(--danger);
+    background: transparent;
+    border-color: #edc0bb;
+}
+
+.btn-danger:hover {
+    background: var(--danger-bg);
+}
+
+.btn-small {
+    padding: 7px 10px;
+    font-size: .78rem;
+}
+
+.btn-block {
+    width: 100%;
+}
+
+.table-card {
+    overflow: hidden;
+    padding: 0;
+}
+
+.table-header {
+    padding: 20px 23px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    border-bottom: 1px solid var(--border);
+}
+
+.table-header h4 {
+    margin: 0;
+    color: var(--brown-900);
+    font-size: 1.08rem;
+}
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .91rem;
+}
+
+th,
+td {
+    padding: 14px 20px;
+    text-align: left;
+    border-bottom: 1px solid #f0e6d9;
+    white-space: nowrap;
+}
+
+th {
+    color: var(--brown-700);
+    background: #fdf7ee;
+    font-size: .76rem;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+}
+
+tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+tbody tr:hover {
+    background: #fffaf3;
+}
+
+.low-stock {
+    background: var(--danger-bg);
+}
+
+.low-stock:hover {
+    background: #fbded9;
+}
+
+.stock-low {
+    color: var(--danger);
+    font-weight: 700;
+}
+
+.actions {
+    display: flex;
+    gap: 7px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 99px;
+    font-size: .72rem;
+    font-weight: 700;
+}
+
+.badge-entry {
+    color: var(--success);
+    background: #e4f3e7;
+}
+
+.badge-exit {
+    color: var(--danger);
+    background: var(--danger-bg);
+}
+
+.filter-bar {
+    display: flex;
+    align-items: end;
+    gap: 12px;
+    padding: 18px 23px;
+    border-bottom: 1px solid var(--border);
+    background: #fffaf3;
+}
+
+.filter-bar .form-group {
+    min-width: 220px;
+    margin: 0;
+}
+
+.login-card {
+    padding: 32px;
+}
+
+.error-message {
+    min-height: 20px;
+    margin: 14px 0 0;
+    color: var(--danger);
+    font-size: .86rem;
+}
+
+.helper-text {
+    margin: 0 0 19px;
+    color: var(--muted);
+    font-size: .9rem;
+}
+
+@media (max-width: 520px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .filter-bar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .filter-bar .form-group {
+        min-width: 0;
+    }
+}

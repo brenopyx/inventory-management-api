@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Categorias | Stock System</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+</head>
+
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-mark">🥖</div>
+                <h1>Stock System</h1>
+                <p>Padaria Central</p>
+            </div>
+            <nav class="nav-links"><a href="dashboard.html"><span class="nav-icon">▦</span>Dashboard</a><a
+                    class="active" href="categorias.html"><span class="nav-icon">▤</span>Categorias</a><a
+                    href="produtos.html"><span class="nav-icon">▣</span>Produtos</a><a href="movimentacoes.html"><span
+                        class="nav-icon">↔</span>Movimentações</a></nav>
+        </aside>
+        <main class="main-content">
+            <header class="topbar">
+                <h2>Categorias</h2>
+                <div class="user-area"><span>Olá, Administrador</span><a class="btn btn-outline btn-small"
+                        href="login.html">Sair</a></div>
+            </header>
+            <section class="page-content">
+                <div class="page-intro">
+                    <h3>Organize os produtos</h3>
+                    <p>Crie e mantenha as categorias do seu estoque.</p>
+                </div>
+                <div class="page-grid">
+                    <section class="card">
+                        <h4 class="card-title">Nova categoria</h4>
+                        <form id="category-form">
+                            <div class="form-group"><label for="category-name">Nome</label><input class="form-control"
+                                    id="category-name" placeholder="Ex.: Pães" required /></div>
+                            <div class="form-actions"><button class="btn btn-primary" type="submit">Criar
+                                    categoria</button></div>
+                        </form>
+                    </section>
+                    <section class="card table-card">
+                        <div class="table-header">
+                            <h4>Categorias existentes</h4>
+                        </div>
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabela-categorias">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script type="module" src="../js/categorias.js"></script>
+</body>
+
+</html>

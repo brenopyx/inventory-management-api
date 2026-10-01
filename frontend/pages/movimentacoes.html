@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movimentações | Stock System</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+</head>
+
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-mark">🥖</div>
+                <h1>Stock System</h1>
+                <p>Padaria Central</p>
+            </div>
+            <nav class="nav-links"><a href="dashboard.html"><span class="nav-icon">▦</span>Dashboard</a><a
+                    href="categorias.html"><span class="nav-icon">▤</span>Categorias</a><a href="produtos.html"><span
+                        class="nav-icon">▣</span>Produtos</a><a class="active" href="movimentacoes.html"><span
+                        class="nav-icon">↔</span>Movimentações</a></nav>
+        </aside>
+        <main class="main-content">
+            <header class="topbar">
+                <h2>Movimentações</h2>
+                <div class="user-area"><span>Olá, Administrador</span><a class="btn btn-outline btn-small"
+                        href="login.html">Sair</a></div>
+            </header>
+            <section class="page-content">
+                <div class="page-intro">
+                    <h3>Controle de estoque</h3>
+                    <p>Registre entradas e saídas de produtos.</p>
+                </div>
+                <div class="page-grid">
+                    <section class="card">
+                        <h4 class="card-title">Registrar movimentação</h4>
+                        <form id="movement-form">
+                            <div class="form-group"><label for="movement-product">Produto</label><select
+                                    class="form-control" id="movement-product" required>
+                                    <option value="">Selecione um produto</option>
+
+                                </select></div>
+                            <div class="form-row">
+                                <div class="form-group"><label for="movement-type">Tipo</label><select
+                                        class="form-control" id="movement-type" required>
+                                        <option value="">Selecione</option>
+                                        <option value="ENTRADA">ENTRADA</option>
+                                        <option value="SAIDA">SAÍDA</option>
+                                    </select></div>
+                                <div class="form-group"><label for="movement-quantity">Quantidade</label><input
+                                        class="form-control" id="movement-quantity" type="number" min="1"
+                                        placeholder="0" required /></div>
+                            </div>
+                            <div class="form-group"><label for="movement-reason">Motivo
+                                    <small>(opcional)</small></label><textarea class="form-control" id="movement-reason"
+                                    placeholder="Ex.: Compra de fornecedor"></textarea></div>
+                            <div class="form-actions"><button class="btn btn-primary" type="submit">Registrar</button>
+                            </div>
+                        </form>
+                    </section>
+                    <section class="card table-card">
+                        <div class="table-header">
+                            <h4>Histórico de movimentações</h4>
+                        </div>
+                        <div class="filter-bar">
+                            <div class="form-group"><label for="history-product">Filtrar por produto</label><select
+                                    class="form-control" id="history-product">
+                                    <option value="">Todos os produtos</option>
+
+                                </select></div><button class="btn btn-outline" type="button" id="btn-filtrar">Filtrar</button>
+                        </div>
+                        <div class="table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Produto</th>
+                                        <th>Tipo</th>
+                                        <th>Quantidade</th>
+                                        <th>Motivo</th>
+                                        <th>Data</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tabela-movimentacoes">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script type="module" src="../js/movimentacoes.js"></script>
+</body>
+
+</html>

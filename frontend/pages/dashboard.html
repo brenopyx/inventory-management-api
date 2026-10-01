@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | Stock System</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+</head>
+
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">🥖</div>
+        <h1>Stock System</h1>
+        <p>Padaria Central</p>
+      </div>
+      <nav class="nav-links" aria-label="Menu principal"><a class="active" href="dashboard.html"><span
+            class="nav-icon">▦</span>Dashboard</a><a href="categorias.html"><span
+            class="nav-icon">▤</span>Categorias</a><a href="produtos.html"><span class="nav-icon">▣</span>Produtos</a><a
+          href="movimentacoes.html"><span class="nav-icon">↔</span>Movimentações</a></nav>
+    </aside>
+    <main class="main-content">
+      <header class="topbar">
+        <h2>Visão geral</h2>
+        <div class="user-area"><span>Olá, Administrador</span><a class="btn btn-outline btn-small"
+            href="login.html">Sair</a></div>
+      </header>
+      <section class="page-content">
+        <div class="page-intro">
+          <h3>Estoque da padaria</h3>
+          <p>Acompanhe os produtos e identifique reposições necessárias.</p>
+        </div>
+        <div class="dashboard-cards">
+          <article class="metric-card">
+            <p class="metric-label">Produtos cadastrados</p>
+            <p class="metric-value" id="metric-produtos">28</p>
+          </article>
+          <article class="metric-card">
+            <p class="metric-label">Categorias</p>
+            <p class="metric-value" id="metric-categorias">6</p>
+          </article>
+          <article class="metric-card alert">
+            <p class="metric-label">Estoque baixo</p>
+            <p class="metric-value" id="metric-estoque-baixo">3 itens</p>
+          </article>
+        </div>
+        <section class="card table-card">
+          <div class="table-header">
+            <h4>Produtos em estoque</h4><a class="btn btn-primary btn-small" href="produtos.html">+ Novo produto</a>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Categoria</th>
+                  <th>Preço</th>
+                  <th>Estoque atual</th>
+                </tr>
+              </thead>
+              <tbody id="tabela-produtos">
+
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+    </main>
+  </div>
+  <script type="module" src="../js/dashboard.js"></script>
+</body>
+
+</html>
